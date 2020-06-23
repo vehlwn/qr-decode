@@ -1,4 +1,5 @@
-from PIL import Image, ImageDraw
+import PIL.Image
+import PIL.ImageDraw
 import sys
 from pyzbar import pyzbar
 import os
@@ -6,9 +7,9 @@ import os
 if __name__ == "__main__":
     i = 1
     for fname in sys.argv[1:]:
-        image = Image.open(fname).convert("RGB")
+        image = PIL.Image.open(fname).convert("RGB")
         out_image = image.copy()
-        draw = ImageDraw.Draw(out_image)
+        draw = PIL.ImageDraw.Draw(out_image)
         for code in pyzbar.decode(image):
             print(f"---\n{i}-th code decoded from '{fname}':")
             print(f"   type = {code.type}")
